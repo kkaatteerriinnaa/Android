@@ -56,6 +56,7 @@
                 style="@style/game_score"
                 tools:text="BEST\n12345"/>
             <Button
+                android:id="@+id/game_btn_undo"
                 style="@style/game_btn"
                 android:text="@string/game_btn_undo"/>
         </LinearLayout>

@@ -16,16 +16,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // EdgeToEdge.enable(this);
+        EdgeToEdge.enable(this);
         setContentView( R.layout.activity_main );
-        // ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-        //     Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-        //     v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-        //     return insets;
-        // });
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         findViewById( R.id.home_btn_calc ).setOnClickListener( this::onButtonCalc );
         findViewById( R.id.home_btn_game ).setOnClickListener( this::onButtonGame );
+        findViewById( R.id.home_btn_anim ).setOnClickListener( this::onButtonAnim );
+        findViewById( R.id.home_btn_rate ).setOnClickListener( this::onButtonRate );
     }
 
     private void onButtonCalc( View view ) {
@@ -37,6 +39,18 @@ public class MainActivity extends AppCompatActivity {
     private void onButtonGame( View view ) {
         Intent activityIntent = new Intent(
                 MainActivity.this, GameActivity.class );
+        startActivity( activityIntent );
+    }
+
+    private void onButtonAnim( View view ) {
+        Intent activityIntent = new Intent(
+                MainActivity.this, AnimActivity.class );
+        startActivity( activityIntent );
+    }
+
+    private void onButtonRate( View view ) {
+        Intent activityIntent = new Intent(
+                MainActivity.this, RateActivity.class );
         startActivity( activityIntent );
     }
 }
